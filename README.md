@@ -4,14 +4,13 @@
 Even though its successor is already specified, the OAuth 1.0 protocol is still in wide use. This easy to use extension for the `URLRequest` type implements the most common OAuth client side request variants.
 
 
-
-##### Requirements
+#### Requirements
 OhhAuth depends on `libCommonCrypto` which is already installed on all common Apple operating systems (macOS, iOS, tvOS, watchOS). Unfortunately Linux is not support at the moment, but is likely to be added in the near future.
 
 
 ## Usage example
 
-###### The classic usage example would be posting a tweet on Twitter:
+#### The classic usage example would be posting a tweet on Twitter:
 
 To get the consumer credentials (key and secret) you first have to register a new Twitter app at https://apps.twitter.com
 
@@ -101,7 +100,7 @@ You only need one file located at `Sources/OhhAuth.swift`. Just drag and drop it
 ///   - paras: url-form parameters
 ///   - consumerCredentials: consumer credentials
 ///   - userCredentials: user credentials (nil if this is a request without user association)
-internal mutating func oAuthSign(method: String, urlFormParameters paras: [String: String],
+public mutating func oAuthSign(method: String, urlFormParameters paras: [String: String],
     consumerCredentials cc: OhhAuth.Credentials, userCredentials uc: OhhAuth.Credentials? = nil)
 ```
 
@@ -117,7 +116,7 @@ internal mutating func oAuthSign(method: String, urlFormParameters paras: [Strin
 ///   - contentType: HTTP header "Content-Type" entry (default: nil)
 ///   - consumerCredentials: consumer credentials
 ///   - userCredentials: user credentials (nil if this is a request without user association)
-internal mutating func oAuthSign(method: String, body: Data? = nil, contentType: String? = nil,
+public mutating func oAuthSign(method: String, body: Data? = nil, contentType: String? = nil,
     consumerCredentials cc: OhhAuth.Credentials, userCredentials uc: OhhAuth.Credentials? = nil)
 ```
 
@@ -137,17 +136,17 @@ internal mutating func oAuthSign(method: String, body: Data? = nil, contentType:
 ///   - userCredentials: user credentials (nil if this is a request without user association)
 ///
 /// - Returns: OAuth HTTP header entry for the Authorization field.
-static func calculateSignature(url: URL, method: String, parameter: [String: String],
+open static func calculateSignature(url: URL, method: String, parameter: [String: String],
     consumerCredentials cc: Credentials, userCredentials uc: Credentials?) -> String
-    
-    
+```
+
+```swift    
 /// Function to perform the right percentage encoding for url form parameters.
 ///
 /// - Parameter paras: url-form parameters
 /// - Parameter encoding: used string encoding (default: .utf8)
 /// - Returns: correctly percentage encoded url-form parameters
-static func httpBody(forFormParameters paras: [String: String], 
+open static func httpBody(forFormParameters paras: [String: String], 
     encoding: String.Encoding = .utf8) -> Data?
-
 ```
 
