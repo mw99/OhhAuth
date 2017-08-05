@@ -20,7 +20,7 @@ Also for further information about `api.twitter.com/1.1/statuses/update.json` pl
 
 
 ```swift
-let cc = (key: "<YOUR APP CONSUMER KEY>", secret: "<YOUT APP CONSUMER SECRET>")
+let cc = (key: "<YOUR APP CONSUMER KEY>", secret: "<YOUR APP CONSUMER SECRET>")
 let uc = (key: "<YOUR USER KEY>", secret: "<YOUR USER SECRET>")
 
 var req = URLRequest(url: URL(string: "https://api.twitter.com/1.1/statuses/update.json")!)
