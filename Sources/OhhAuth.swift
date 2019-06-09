@@ -41,7 +41,7 @@ open class OhhAuth
     ///   - userCredentials: user credentials (nil if this is a request without user association)
     ///
     /// - Returns: OAuth HTTP header entry for the Authorization field.
-    open static func calculateSignature(url: URL, method: String, parameter: [String: String],
+    public static func calculateSignature(url: URL, method: String, parameter: [String: String],
         consumerCredentials cc: Credentials, userCredentials uc: Credentials?) -> String
     {
         typealias Tup = (key: String, value: String)
@@ -99,7 +99,7 @@ open class OhhAuth
     /// - Parameter paras: url-form parameters
     /// - Parameter encoding: used string encoding (default: .utf8)
     /// - Returns: correctly percentage encoded url-form parameters
-    open static func httpBody(forFormParameters paras: [String: String], encoding: String.Encoding = .utf8) -> Data?
+    public static func httpBody(forFormParameters paras: [String: String], encoding: String.Encoding = .utf8) -> Data?
     {
         let trans: (String, String) -> String = { k, v in
             return rfc3986encode(k) + "=" + rfc3986encode(v)
