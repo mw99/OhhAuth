@@ -154,7 +154,7 @@ public extension URLRequest
     ///   - paras: url-form parameters
     ///   - consumerCredentials: consumer credentials
     ///   - userCredentials: user credentials (nil if this is a request without user association)
-    public mutating func oAuthSign(method: String, urlFormParameters paras: [String: String],
+    mutating func oAuthSign(method: String, urlFormParameters paras: [String: String],
         consumerCredentials cc: OhhAuth.Credentials, userCredentials uc: OhhAuth.Credentials? = nil)
     {
         self.httpMethod = method.uppercased()
@@ -182,7 +182,7 @@ public extension URLRequest
     ///   - contentType: HTTP header "Content-Type" entry (default: nil)
     ///   - consumerCredentials: consumer credentials
     ///   - userCredentials: user credentials (nil if this is a request without user association)
-    public mutating func oAuthSign(method: String, body: Data? = nil, contentType: String? = nil,
+    mutating func oAuthSign(method: String, body: Data? = nil, contentType: String? = nil,
         consumerCredentials cc: OhhAuth.Credentials, userCredentials uc: OhhAuth.Credentials? = nil)
     {
         self.httpMethod = method.uppercased()
