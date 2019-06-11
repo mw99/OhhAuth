@@ -23,7 +23,7 @@
 
 import Foundation
 
-open class OhhAuth
+public class OhhAuth
 {
     /// Tuple to represent signing credentials. (consumer as well as user credentials)
     public typealias Credentials = (key: String, secret: String)
@@ -41,7 +41,7 @@ open class OhhAuth
     ///   - userCredentials: user credentials (nil if this is a request without user association)
     ///
     /// - Returns: OAuth HTTP header entry for the Authorization field.
-    open static func calculateSignature(url: URL, method: String, parameter: [String: String],
+    static func calculateSignature(url: URL, method: String, parameter: [String: String],
         consumerCredentials cc: Credentials, userCredentials uc: Credentials?) -> String
     {
         typealias Tup = (key: String, value: String)
@@ -99,7 +99,7 @@ open class OhhAuth
     /// - Parameter paras: url-form parameters
     /// - Parameter encoding: used string encoding (default: .utf8)
     /// - Returns: correctly percentage encoded url-form parameters
-    open static func httpBody(forFormParameters paras: [String: String], encoding: String.Encoding = .utf8) -> Data?
+    static func httpBody(forFormParameters paras: [String: String], encoding: String.Encoding = .utf8) -> Data?
     {
         let trans: (String, String) -> String = { k, v in
             return rfc3986encode(k) + "=" + rfc3986encode(v)
@@ -154,7 +154,7 @@ public extension URLRequest
     ///   - paras: url-form parameters
     ///   - consumerCredentials: consumer credentials
     ///   - userCredentials: user credentials (nil if this is a request without user association)
-    public mutating func oAuthSign(method: String, urlFormParameters paras: [String: String],
+    mutating func oAuthSign(method: String, urlFormParameters paras: [String: String],
         consumerCredentials cc: OhhAuth.Credentials, userCredentials uc: OhhAuth.Credentials? = nil)
     {
         self.httpMethod = method.uppercased()
@@ -182,7 +182,7 @@ public extension URLRequest
     ///   - contentType: HTTP header "Content-Type" entry (default: nil)
     ///   - consumerCredentials: consumer credentials
     ///   - userCredentials: user credentials (nil if this is a request without user association)
-    public mutating func oAuthSign(method: String, body: Data? = nil, contentType: String? = nil,
+    mutating func oAuthSign(method: String, body: Data? = nil, contentType: String? = nil,
         consumerCredentials cc: OhhAuth.Credentials, userCredentials uc: OhhAuth.Credentials? = nil)
     {
         self.httpMethod = method.uppercased()
