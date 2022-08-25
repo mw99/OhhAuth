@@ -23,7 +23,7 @@
 
 import Foundation
 
-public class OhhAuth
+open class OhhAuth
 {
     /// Tuple to represent signing credentials. (consumer as well as user credentials)
     public typealias Credentials = (key: String, secret: String)
@@ -41,7 +41,7 @@ public class OhhAuth
     ///   - userCredentials: user credentials (nil if this is a request without user association)
     ///
     /// - Returns: OAuth HTTP header entry for the Authorization field.
-    static func calculateSignature(url: URL, method: String, parameter: [String: String],
+    public static func calculateSignature(url: URL, method: String, parameter: [String: String],
         consumerCredentials cc: Credentials, userCredentials uc: Credentials?) -> String
     {
         typealias Tup = (key: String, value: String)
@@ -99,7 +99,7 @@ public class OhhAuth
     /// - Parameter paras: url-form parameters
     /// - Parameter encoding: used string encoding (default: .utf8)
     /// - Returns: correctly percentage encoded url-form parameters
-    static func httpBody(forFormParameters paras: [String: String], encoding: String.Encoding = .utf8) -> Data?
+    public static func httpBody(forFormParameters paras: [String: String], encoding: String.Encoding = .utf8) -> Data?
     {
         let trans: (String, String) -> String = { k, v in
             return rfc3986encode(k) + "=" + rfc3986encode(v)
