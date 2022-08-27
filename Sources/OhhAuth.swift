@@ -22,6 +22,9 @@
 /// - Copyright: 2017
 
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 open class OhhAuth
 {
