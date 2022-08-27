@@ -35,7 +35,7 @@ let task = URLSession(configuration: .ephemeral).dataTask(with: req) { (data, re
         print(error)
     }
     else if let data = data {
-        print(String(data: data, encoding: .utf8) ?? "Does not look like an utf8 response :(")
+        print(String(data: data, encoding: .utf8) ?? "Does not look like a utf8 response :(")
     }
 }
 task.resume()
